@@ -2,7 +2,9 @@
   "extends": [
     "airbnb-base",
     "next/core-web-vitals",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "next",
+    "prettier"
   ],
   "rules": {
     "prettier/prettier": [
