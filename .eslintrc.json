@@ -44,6 +44,7 @@
             "endOfLine": "auto"
           }
         ],
+        "comma-dangle": "off",
         "react/function-component-definition": "off",
         "react/destructuring-assignment": "off",
         "react/require-default-props": "off",
