@@ -1,0 +1,97 @@
+module.exports = {
+  extends: [
+    'airbnb-base',
+    'next/core-web-vitals',
+    'plugin:prettier/recommended',
+  ],
+  rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        singleQuote: true,
+        endOfLine: 'auto',
+      },
+    ],
+  },
+  overrides: [
+    {
+      files: ['**/*.ts', '**/*.tsx'],
+      plugins: [
+        '@typescript-eslint',
+        'unused-imports',
+        'tailwindcss',
+        'simple-import-sort',
+      ],
+      extends: [
+        'plugin:tailwindcss/recommended',
+        'airbnb',
+        'airbnb-typescript',
+        'airbnb/hooks',
+        'next/core-web-vitals',
+        'plugin:prettier/recommended',
+      ],
+      parserOptions: {
+        project: './tsconfig.json',
+      },
+      rules: {
+        'prettier/prettier': [
+          'error',
+          {
+            singleQuote: true,
+            endOfLine: 'auto',
+          },
+        ],
+        'react/function-component-definition': 'off',
+        'react/destructuring-assignment': 'off',
+        'react/require-default-props': 'off',
+        'react/jsx-props-no-spreading': 'off',
+        'react-hooks/exhaustive-deps': 'off',
+        '@next/next/no-img-element': 'off',
+        '@typescript-eslint/comma-dangle': 'off',
+        '@typescript-eslint/consistent-type-imports': 'error',
+        'no-restricted-syntax': [
+          'error',
+          'ForInStatement',
+          'LabeledStatement',
+          'WithStatement',
+        ],
+        'import/prefer-default-export': 'off',
+        'simple-import-sort/imports': 'error',
+        'simple-import-sort/exports': 'error',
+        '@typescript-eslint/no-unused-vars': 'off',
+        'unused-imports/no-unused-imports': 'error',
+        'unused-imports/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      },
+    },
+    {
+      files: ['**/*.test.ts', '**/*.test.tsx'],
+      plugins: ['jest', 'jest-formatting', 'testing-library', 'jest-dom'],
+      extends: [
+        'plugin:jest/recommended',
+        'plugin:jest-formatting/recommended',
+        'plugin:testing-library/react',
+        'plugin:jest-dom/recommended',
+      ],
+    },
+    {
+      files: ['cypress/**/*.ts'],
+      plugins: ['cypress'],
+      extends: ['plugin:cypress/recommended'],
+      parserOptions: {
+        project: './cypress/tsconfig.json',
+      },
+    },
+    {
+      files: ['*.stories.*'],
+      extends: ['plugin:storybook/recommended'],
+      rules: {
+        'import/no-extraneous-dependencies': [
+          'error',
+          {
+            devDependencies: true,
+          },
+        ],
+      },
+    },
+  ],
+};
