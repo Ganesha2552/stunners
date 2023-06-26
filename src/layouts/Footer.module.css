@@ -1,0 +1,17 @@
+.footer-container {
+  background-color: #0B1A2C !important;
+  color: #8C95A1;
+}
+
+.footer-container h5,
+.footer-container p {
+  color: #8C95A1;
+}
+
+.footer-container a {
+  color: #8C95A1;
+}
+
+.footer-container a:hover {
+  color: #fff;
+}

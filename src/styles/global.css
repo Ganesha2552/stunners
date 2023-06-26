@@ -19,3 +19,8 @@ a:hover {
 .content ul {
   @apply my-6;
 }
+.container {
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 100vh;
+}
