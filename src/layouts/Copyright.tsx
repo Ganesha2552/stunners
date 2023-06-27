@@ -8,7 +8,10 @@ export default function Copyright() {
       <Link color="inherit" href="https://stunnerscc.com/">
         Stunners Cricket Clubs, All Rights Reserved
       </Link>{' '}
-      {new Date().getFullYear()}.
+      {new Date().getFullYear()}. Developed and Maintained by
+      <Link color="inherit" href="https://github.com/Ganesha2552">
+        Ganesha Moorthy
+      </Link>
     </Typography>
   );
 }

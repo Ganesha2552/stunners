@@ -4,7 +4,7 @@ import 'react-tabs/style/react-tabs.css';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import SportsScoreOutlinedIcon from '@mui/icons-material/SportsScoreOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
-import { Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -15,6 +15,7 @@ import { Main } from '@/templates/Main';
 
 import PrimaryButton from '../components/Buttons/PrimaryButton';
 import TextButton from '../components/Buttons/TextButton';
+import Carousel from '../components/Carousel/Carousel';
 import SubBanner from '../layouts/SubBanner';
 
 const useStyles = makeStyles({
@@ -27,6 +28,13 @@ const useStyles = makeStyles({
   bigImg: {
     width: '100%',
     height: '320px',
+    borderRadius: '15px',
+    display: 'inline-block',
+    overflow: 'hidden',
+    margin: 0,
+  },
+  bigImgHistory: {
+    width: '100%',
     borderRadius: '15px',
     display: 'inline-block',
     overflow: 'hidden',
@@ -45,6 +53,16 @@ const useStyles = makeStyles({
     marginTop: '-130px',
     marginBottom: '50px',
   },
+  owlItem: {
+    touchAction: 'pan-y',
+    userSelect: 'none',
+  },
+  itemsAchiv: {
+    display: 'inline-block',
+    width: '100%',
+    textAlign: 'center',
+    position: 'relative',
+  },
 });
 const About = () => {
   const theme = useTheme();
@@ -57,8 +75,19 @@ const About = () => {
   const imageBasepath = `${router.basePath}/assets/images/`;
   const aboutUsMainImage = `${imageBasepath}teamStunners.webp`;
   const stunnersFirstImage = `${imageBasepath}stunnerfirst.jpeg`;
-
+  const acheivementBgImage = `${imageBasepath}cricket-ball.jpg`;
   const smallImage = `${imageBasepath}cricketground.webp`;
+  const tournamentsWon = {
+    '2015 Sri CC T20 Cup': `${imageBasepath}award-img3.png`,
+    '2018 Jeevi Krishna One Day T20 Cup': `${imageBasepath}award-img1.png`,
+    '2018 ESCA Zeitgeist Cup': `${imageBasepath}award-img4.png`,
+    '2019 Ooty Premier League Runners': `${imageBasepath}award-img2.png`,
+    '2019 SM 50 Overs Cup': `${imageBasepath}award-img4.png`,
+    '2019 Jeevi Krishna T30 Cup': `${imageBasepath}award-img4.png`,
+    '2019 Independance Day Runners': `${imageBasepath}award-img2.png`,
+    '2019 Ooty Premier League Cup': `${imageBasepath}award-img4.png`,
+    '2022 Ooty Premier League Cup': `${imageBasepath}award-img4.png`,
+  };
 
   const handleHistory = (index: number) => {
     setActiveTab(index);
@@ -238,7 +267,7 @@ const About = () => {
                   <Grid container item spacing={2}>
                     <Grid item xs={12} md={6}>
                       <div>
-                        <figure className={classes.bigImg}>
+                        <figure className={classes.bigImgHistory}>
                           <img src={stunnersFirstImage} alt="pic" />
                         </figure>
                       </div>
@@ -329,6 +358,61 @@ const About = () => {
                   </div>
                 </TabPanel>
               </Tabs>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <Grid
+            container
+            item
+            xs={12}
+            sx={{
+              background: `url(${acheivementBgImage})`,
+
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'repeat-x',
+              display: 'flex',
+              flexDirection: 'column',
+              padding: '20px',
+              minHeight: '400px',
+              width: '100%',
+            }}
+          >
+            <Grid
+              item
+              xs={10}
+              margin={isSmallScreen ? '0 0 0 3%' : '0 0 0 10%'}
+            >
+              <Typography gutterBottom variant="h5">
+                Our Acheivements
+              </Typography>
+              <Box>
+                <Carousel
+                  showIndicators={false}
+                  showStatus={false}
+                  centerSlidePercentage={10}
+                  centerSlidePercentageSmallScreen={20}
+                  showArrows={false}
+                >
+                  {Object.entries(tournamentsWon).map(([key, value]) => (
+                    <div
+                      className={classes.owlItem}
+                      style={{ width: '174.333px', marginRight: '50px' }}
+                      key={key}
+                    >
+                      <div className={classes.itemsAchiv}>
+                        <figure>
+                          <img src={value} alt={`ad${key}`} />
+                        </figure>
+                        <Typography gutterBottom variant="h5">
+                          {key}
+                        </Typography>
+                      </div>
+                    </div>
+                  ))}
+                </Carousel>
+              </Box>
             </Grid>
           </Grid>
         </Grid>

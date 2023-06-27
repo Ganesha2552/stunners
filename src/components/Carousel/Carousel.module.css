@@ -9,6 +9,7 @@
   justify-content: center;
 }
 
+
 /* Media queries for responsiveness */
 @media screen and (max-height: 600px) {
   .carousel-container {

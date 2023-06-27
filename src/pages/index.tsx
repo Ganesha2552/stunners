@@ -32,7 +32,13 @@ Come and see us in action. Or try out and play with us!"
     >
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Carousel images={images} />
+          <Carousel>
+            {images.map((image, index) => (
+              <div key={image}>
+                <img src={image} alt={`pic ${index}`} />
+              </div>
+            ))}
+          </Carousel>
         </Grid>
         <Grid item xs={12}>
           <p>
